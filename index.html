@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>فشرده‌سازی و سیاه‌وسفید کردن عکس</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: inline-block;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        input[type="file"], button, label {
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+        }
+
+        button {
+            padding: 0.7rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .quality-group {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>تبدیل و فشرده‌سازی تصویر</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+
+            <label>
+                <input type="checkbox" name="grayscale"> تبدیل به سیاه‌وسفید
+            </label>
+
+            <div class="quality-group">
+                <strong>درجه فشرده‌سازی:</strong><br>
+                <label><input type="radio" name="compression" value="high" checked> زیاد (کیفیت بالا)</label>
+                <label><input type="radio" name="compression" value="medium"> متوسط</label>
+                <label><input type="radio" name="compression" value="low"> زیاد (فشرده‌تر)</label>
+            </div>
+
+            <button type="submit">تبدیل و نمایش</button>
+        </form>
+
+        {% if image_data %}
+            <h3>پیش‌نمایش تصویر:</h3>
+            <img src="{{ image_data }}" alt="پیش‌نمایش تصویر">
+            <br>
+            <a href="{{ url_for('download_image') }}">
+                <button>دانلود تصویر نهایی</button>
+            </a>
+        {% endif %}
+    </div>
+</body>
+</html>
