@@ -17,6 +17,12 @@ This is a simple Flask web application that allows users to upload an image, con
 - Download processed image (دانلود تصویر نهایی)
 
 ---
+## Project Demo Video
+
+[Watch the demo video](https://github.com/sajadbidram/flask-image-processor/raw/main/flask-image-processor.mp4)
+
+
+
 
 ## 🚀 Installation | نصب
 
